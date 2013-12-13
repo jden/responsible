@@ -1,0 +1,16 @@
+{
+  "name": "responsible",
+  "version": "0.1.0",
+  "description": "handle http responses",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git@github.com:jden/responsible.git",
+  "author": "jden <jason@denizac.org>",
+  "license": "MIT",
+  "readmeFilename": "README.md",
+  "readme": "# responsible\n(connect middleware) res.send & res.error, with dignity\n\n(I promise to be responsible and write docs & tests in the morning!)",
+  "_id": "responsible@0.0.0-pre",
+  "_from": "responsible@0.0.0-pre"
+}
