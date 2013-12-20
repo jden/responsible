@@ -31,21 +31,20 @@ function error (err) {
   }
 
 
+  trace = trace || (new Error()).stack;
+  var verboseMessage = {
+      code: code,
+      message: message,
+      info: formatReqInfo(req),
+      trace: trace
+  }
+  logError(verboseMessage);
+
   if (module.exports.quiet) {
     res.send(code)
   } else {
     if (module.exports.verbose) {
-
-    trace = trace || (new Error()).stack;
-    var verboseMessage = {
-      code: code,
-      message: message,
-      info: formatReqInfo(),
-      trace: trace
-    }
-    res.send(code, verboseMessage)
-    logError(verboseMessage);
-
+      res.send(code, verboseMessage)
     } else {
       res.send(code, codes[code] || 'Error')
     }
