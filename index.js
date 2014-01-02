@@ -35,7 +35,6 @@ function error (err) {
   var verboseMessage = {
       code: code,
       message: message,
-      info: formatReqInfo(req),
       trace: trace
   }
   logError(verboseMessage);
@@ -52,14 +51,6 @@ function error (err) {
 
 }
 
-function formatReqInfo(req) {
-  var reqInfo = module.exports.reqInfo() || {}
-  reqInfo.url = req.url
-  reqInfo.method = req.method
-  return reqInfo
-}
-
-// simplied from express... merci, TJ et al
 // very limited functionality, will send plaintext and json
 function send(code, content) {
   if (typeof code === 'number' && code >= 100 && code < 600) {
@@ -86,4 +77,3 @@ function send(code, content) {
 module.exports.quiet = true
 module.exports.verbose = false
 module.exports.logError = console.error.bind(console)
-module.exports.reqInfo = function (req) {}
