@@ -37,7 +37,7 @@ function error (err) {
       message: message,
       trace: trace
   }
-  logError(verboseMessage);
+  module.exports.logError(verboseMessage)
 
   if (module.exports.quiet) {
     res.send(code)
@@ -61,16 +61,20 @@ function send(code, content) {
   }
 
   if (typeof content === 'object') {
-    this.getHeader('Content-Type') || this.setHeader('Content-Type', 'application/json');
+    if (!this.getHeader('Content-Type')) {
+      this.setHeader('Content-Type', 'application/json')
+    }
     content = JSON.stringify(content, null, 2)
   }
   if (typeof content !== 'string') {
     content = ''
   }
   this.charset = this.charset || 'utf-8';
-  this.getHeader('Content-Type') || this.setHeader('Content-Type', 'text/plain');
-  this.setHeader('Content-Length', Buffer.byteLength(content));
-  this.end(content);
+  if (!this.getHeader('Content-Type')) {
+    this.setHeader('Content-Type', 'text/plain')
+  }
+  this.setHeader('Content-Length', Buffer.byteLength(content))
+  this.end(content)
 }
 
 // overridable extension points:

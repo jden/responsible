@@ -9,5 +9,15 @@
   "repository": "git@github.com:jden/responsible.git",
   "author": "jden <jason@denizac.org>",
   "license": "MIT",
-  "readmeFilename": "README.md"
+  "readmeFilename": "README.md",
+  "jshintConfig": {
+    "curly": true,
+    "quotmark": "single",
+    "unused": true,
+    "undef": true,
+    "asi": true,
+    "node": true,
+    "strict": false,
+    "esnext": true
+  }
 }
